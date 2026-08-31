@@ -2,6 +2,7 @@
 
   <item-line>
     <li class="snipcart-item-line custom-item-line-wrapper">
+
       <div class="custom-item-line">
 
         <div class="custom-item-line__image">
@@ -45,20 +46,23 @@
         <div class="custom-item-line__actions">
 
           <div class="custom-item-line__price">
-  {{ item.unitPrice | money(currency) }}
-</div>
+            <item-price :item="item"></item-price>
+          </div>
 
           <div class="custom-item-line__controls">
+
             <item-quantity></item-quantity>
 
             <remove-item-action class="custom-item-line__remove">
               <icon name="trash"></icon>
             </remove-item-action>
+
           </div>
 
         </div>
 
       </div>
+
     </li>
   </item-line>
 
