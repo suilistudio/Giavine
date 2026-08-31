@@ -1,14 +1,12 @@
-<div id="snipcart-templates">
+<item-line>
 
-  <overridable name="item-line">
-
-    <li
-      :class="{
-        'snipcart-item-line': true,
-        'snipcart-item-line--cart-edit': editingCart
-      }"
-    >
-      <div class="custom-item-line">
+<li
+  :class="{
+    'snipcart-item-line': true,
+    'snipcart-item-line--cart-edit': editingCart
+  }"
+>
+    <div class="custom-item-line">
 
         <div class="custom-item-line__image">
           <item-image></item-image>
@@ -63,11 +61,10 @@
           </div>
 
         </div>
+        </div>
+</li>
 
-      </div>
-    </li>
-
-  </overridable>
+</item-line>
 
   <style>
     .custom-item-line {
