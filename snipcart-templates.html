@@ -1,65 +1,60 @@
 <div id="snipcart-templates">
 
   <item-line>
-    <li class="snipcart-item-line custom-item-line-wrapper">
+    <li class="snipcart-item-line custom-item-line">
 
-      <div class="custom-item-line">
+      <!-- COLUMN 1 -->
+      <div class="custom-item-line__image">
+        <item-image></item-image>
+      </div>
 
-        <div class="custom-item-line__image">
-          <item-image></item-image>
+      <!-- COLUMN 2 -->
+      <div class="custom-item-line__details">
+
+        <div class="custom-item-line__name">
+          {{ item.name }}
         </div>
 
-        <div class="custom-item-line__details">
+        <div
+          v-if="item.metadata && item.metadata.subheader"
+          class="custom-item-line__subheader"
+        >
+          {{ item.metadata.subheader }}
+        </div>
 
-          <div class="custom-item-line__name">
-            {{ item.name }}
-          </div>
-
+        <div
+          v-if="item.customFields && item.customFields.length"
+          class="custom-item-line__attributes"
+        >
           <div
-            v-if="item.metadata && item.metadata.subheader"
-            class="custom-item-line__subheader"
+            v-for="field in item.customFields"
+            :key="field.name"
+            class="custom-item-line__attribute"
           >
-            {{ item.metadata.subheader }}
+            <span class="custom-item-line__attribute-name">
+              {{ field.name }}:
+            </span>
+
+            <span>
+              {{ field.value }}
+            </span>
           </div>
-
-          <div
-            v-if="item.customFields && item.customFields.length"
-            class="custom-item-line__attributes"
-          >
-            <div
-              v-for="field in item.customFields"
-              :key="field.name"
-              class="custom-item-line__attribute"
-            >
-              <span class="custom-item-line__attribute-name">
-                {{ field.name }}:
-              </span>
-
-              <span>
-                {{ field.value }}
-              </span>
-            </div>
-          </div>
-
         </div>
 
-        <div class="custom-item-line__actions">
-
-          <div class="custom-item-line__price">
-            <item-price :item="item"></item-price>
-          </div>
-
-          <div class="custom-item-line__controls">
-
-            <item-quantity></item-quantity>
-
-            <remove-item-action class="custom-item-line__remove">
-              <icon name="trash"></icon>
-            </remove-item-action>
-
-          </div>
-
+        <div class="custom-item-line__price">
+          <item-price :item="item"></item-price>
         </div>
+
+      </div>
+
+      <!-- COLUMN 3 -->
+      <div class="custom-item-line__controls">
+
+        <remove-item-action class="custom-item-line__remove">
+          <icon name="trash"></icon>
+        </remove-item-action>
+
+        <item-quantity></item-quantity>
 
       </div>
 
